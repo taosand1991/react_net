@@ -1,7 +1,7 @@
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { Category } from '../Interfaces/categoryInterface';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Product } from '../Interfaces/productInterface';
 import axios from 'axios';
 import Loading from './Loading';
@@ -41,7 +41,7 @@ const EditProduct = () => {
 		}
 	};
 
-	const getProduct = async (): Promise<Product | undefined> => {
+	const getProduct = useCallback(async (): Promise<Product | undefined> => {
 		try {
 			setLoading(true);
 			const response = await axios.get(`Product/${params.id}`);
@@ -53,11 +53,11 @@ const EditProduct = () => {
 			setLoading(false);
 			console.log(error.response.data.message);
 		}
-	};
+	}, [params.id]);
 
 	useEffect(() => {
 		getProduct();
-	}, []);
+	});
 
 	return (
 		<>
