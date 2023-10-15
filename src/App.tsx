@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavBar } from './components/NavBar';
+import { Routes, Route } from 'react-router-dom';
+import { HomePage } from './components/HomePage';
+import { AddProduct } from './components/AddProduct';
+import { Login } from './components/Login';
+import EditProduct from './components/EditProduct';
+
+// const EditProduct = React.lazy(() => import('./components/EditProduct'));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	useEffect(() => {}, []);
+
+	return (
+		<div className='App'>
+			<NavBar />
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+				<Route path='/add-product' element={<AddProduct />} />
+				<Route path='/:id' element={<EditProduct />} />
+				<Route path='/login' element={<Login />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
