@@ -14,6 +14,8 @@ RUN npm run build
 FROM node:20.3.1-alpine as final
 
 COPY --from=builder /app/build/ .
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/yarn.lock .
 
 EXPOSE 3000
 
