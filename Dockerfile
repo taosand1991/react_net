@@ -11,13 +11,13 @@ COPY . .
 
 RUN npm run build
 
-FROM node:20.3.1-alpine as final
+FROM nginx:alpine as final
 
-COPY --from=builder /app/ .
+COPY --from=builder /app/build /usr/share/nginx/html
 
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD [ "npm", "start" ]
+CMD ["nginx", "-g", "daemon off;"]
 
 
