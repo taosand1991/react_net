@@ -7,6 +7,7 @@ export interface Product {
 	productDescription: string;
 	productPrice: string;
 	customerId: number;
+	productImage: string;
 	categories: Array<Category>;
 }
 

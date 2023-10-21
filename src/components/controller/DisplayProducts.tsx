@@ -19,8 +19,18 @@ export const DisplayProducts = ({ loading, products, user, handleDelete }: HomeP
 									<Col key={product.productName} className='mb-3'>
 										<Card style={{ width: '22rem' }}>
 											<Card.Img
+												width={200}
+												height={200}
+												style={{
+													backgroundRepeat: 'no-repeat',
+													objectFit: 'cover',
+												}}
 												variant='top'
-												src={getImageUrl(product.productName)}
+												src={
+													product.productImage
+														? product.productImage
+														: getImageUrl(product.productName)
+												}
 											/>
 											<Card.Body>
 												<Row>
@@ -79,7 +89,7 @@ export const DisplayProducts = ({ loading, products, user, handleDelete }: HomeP
 																		textDecoration: 'none',
 																		color: 'black',
 																	}}
-																	to={`/${product.id}`}
+																	to={`product/${product.id}`}
 																>
 																	Edit Product
 																</Link>

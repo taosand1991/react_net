@@ -4,6 +4,7 @@ export interface User {
 	id?: number;
 	admin?: boolean;
 	email: string;
+	phoneNumber: string;
 	password: string;
 	confirmPassword: string;
 }

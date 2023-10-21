@@ -12,6 +12,7 @@ export const AddProduct = (): JSX.Element => {
 		productName: '',
 		productPrice: '',
 		productDescription: '',
+		productImage: '',
 		customerId: 0,
 		categories: [],
 	});
@@ -77,6 +78,7 @@ export const AddProduct = (): JSX.Element => {
 				productDescription: '',
 				categories: [],
 				customerId: 0,
+				productImage: '',
 			});
 			setCategory({ name: '', type: '' });
 			setLoading(false);
@@ -98,7 +100,7 @@ export const AddProduct = (): JSX.Element => {
 							<Form.Label>Product Name</Form.Label>
 							<Form.Control
 								required
-								type='email'
+								type='text'
 								name='productName'
 								value={product.productName}
 								placeholder='Enter product Name'
@@ -113,6 +115,16 @@ export const AddProduct = (): JSX.Element => {
 								value={product.productDescription}
 								as='textarea'
 								rows={3}
+								onChange={handleChange}
+							/>
+						</Form.Group>
+						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+							<Form.Label>Product Image Link</Form.Label>
+							<Form.Control
+								type='text'
+								name='productImage'
+								value={product.productImage}
+								placeholder='Enter product Image Link'
 								onChange={handleChange}
 							/>
 						</Form.Group>

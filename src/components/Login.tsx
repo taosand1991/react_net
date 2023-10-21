@@ -4,6 +4,7 @@ import { UserLogin } from '../Interfaces/userLoginInterface';
 import axios from 'axios';
 import { User } from '../Interfaces/userInterface';
 import { LoginError } from '../Interfaces/errorInterface';
+import { Link } from 'react-router-dom';
 
 export const Login = () => {
 	const [userDetail, setUserDetail] = useState<{ email: string; password: string }>({
@@ -15,6 +16,7 @@ export const Login = () => {
 		lastName: '',
 		email: '',
 		password: '',
+		phoneNumber: '',
 		confirmPassword: '',
 	});
 	const [admin, setAdmin] = useState<boolean>();
@@ -129,6 +131,7 @@ export const Login = () => {
 				firstName: userReg.firstName,
 				lastName: userReg.lastName,
 				password: userReg.password,
+				phoneNumber: userReg.phoneNumber,
 				admin: admin,
 			};
 			const response = await axios.post('/Customer', userOptions);
@@ -177,8 +180,20 @@ export const Login = () => {
 									placeholder='Enter password'
 									aria-describedby='passwordHelpBlock'
 								/>
+								<div className='mt-2 -mb-2 text-end'>
+									<p>
+										forgot password?{' '}
+										<Link to='/reset-password'>reset password</Link>
+									</p>
+								</div>
 								<div className='d-grid gap-2 mt-4'>
-									<Button disabled={loading} type='submit' variant='primary'>
+									<Button
+										disabled={
+											loading || !userDetail.email || !userDetail.password
+										}
+										type='submit'
+										variant='primary'
+									>
 										Login
 										{loading && login && (
 											<span className='ms-4'>
@@ -231,6 +246,11 @@ export const Login = () => {
 									onChange={handleAdminChange}
 								/>
 							</Form.Group>
+							{admin && (
+								<div className='mt-2 mb-3 text-danger'>
+									Please, register with email provided at legacyworld.
+								</div>
+							)}
 							<Form.Group className='mb-2'>
 								<Form.Label>Email Address</Form.Label>
 								<Form.Control
@@ -264,6 +284,17 @@ export const Login = () => {
 									aria-describedby='passwordHelpBlock'
 									name='lastName'
 									value={userReg.lastName}
+									onChange={handleUserRegInputChange}
+								/>
+							</Form.Group>
+							<Form.Group className='mb-2'>
+								<Form.Label>Phone Number</Form.Label>
+								<Form.Control
+									type='text'
+									placeholder='Enter your Phone number'
+									aria-describedby='passwordHelpBlock'
+									name='phoneNumber'
+									value={userReg.phoneNumber}
 									onChange={handleUserRegInputChange}
 								/>
 							</Form.Group>

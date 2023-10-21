@@ -1,11 +1,10 @@
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { Category } from '../Interfaces/categoryInterface';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { Product } from '../Interfaces/productInterface';
 import axios from 'axios';
 import Loading from './Loading';
-import { useNavigate } from 'react-router-dom';
 
 const EditProduct = () => {
 	const params = useParams();
@@ -45,19 +44,19 @@ const EditProduct = () => {
 		try {
 			setLoading(true);
 			const response = await axios.get(`Product/${params.id}`);
-			console.log(response.data);
 			setProduct(response.data);
 			setLoading(false);
 			return response.data;
 		} catch (error: any) {
 			setLoading(false);
 			console.log(error.response.data.message);
+			navigate('*');
 		}
-	}, [params.id]);
+	}, [navigate, params.id]);
 
 	useEffect(() => {
 		getProduct();
-	});
+	}, [getProduct]);
 
 	return (
 		<>
@@ -72,7 +71,7 @@ const EditProduct = () => {
 									<Form.Label>Product Name</Form.Label>
 									<Form.Control
 										required
-										type='email'
+										type='text'
 										name='productName'
 										value={product && product?.productName}
 										placeholder='Enter product Name'
@@ -87,9 +86,20 @@ const EditProduct = () => {
 									<Form.Control
 										required
 										name='productDescription'
-										value={product?.productDescription}
+										value={product && product?.productDescription}
 										as='textarea'
 										rows={3}
+										onChange={handleChange}
+									/>
+								</Form.Group>
+								<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+									<Form.Label>Product Image Link</Form.Label>
+									<Form.Control
+										required
+										type='text'
+										name='productImage'
+										value={product && product?.productImage}
+										placeholder='Enter product Image Link'
 										onChange={handleChange}
 									/>
 								</Form.Group>
@@ -102,7 +112,7 @@ const EditProduct = () => {
 									<Form.Control
 										required
 										name='productPrice'
-										value={product?.productPrice}
+										value={product && product?.productPrice}
 										type='number'
 										placeholder='Enter product Price'
 										onChange={handleChange}
