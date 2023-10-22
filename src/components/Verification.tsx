@@ -32,11 +32,8 @@ export const Verification = () => {
 	};
 	return (
 		<>
-			<Container
-				className='d-flex justify-content-center align-items-center'
-				style={{ height: '60vh', width: '50%' }}
-			>
-				<Col>
+			<Container className='d-flex justify-content-center align-items-center reset-password'>
+				<Col sm={12} xs={12}>
 					<h4 className='mb-4 text-center'>Reset your password verification</h4>
 					<Form onSubmit={getVerificationStatus}>
 						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>

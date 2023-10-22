@@ -16,8 +16,8 @@ export const DisplayProducts = ({ loading, products, user, handleDelete }: HomeP
 						{Array.isArray(products) &&
 							products.map((product: Product) => {
 								return (
-									<Col key={product.productName} className='mb-3'>
-										<Card style={{ width: '22rem' }}>
+									<Col xs='12' lg='4' key={product.productName} className='mb-3'>
+										<Card className='product-card'>
 											<Card.Img
 												width={200}
 												height={200}

@@ -1,6 +1,6 @@
-### React Project Bootsrapped with .NET WEB API
+# React Project Bootsrapped with .NET WEB API
 
-#### To get started with the project:
+## To get started with the project
 
 1. Clone the project
 2. Cd into `React_Net` folder

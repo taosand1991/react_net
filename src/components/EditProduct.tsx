@@ -65,7 +65,7 @@ const EditProduct = () => {
 				<Container className='mt-5'>
 					<h4 className='text-center mb-4'>Edit a product</h4>
 					<Row>
-						<Col>
+						<Col sm='auto' lg='6'>
 							<Form>
 								<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
 									<Form.Label>Product Name</Form.Label>
@@ -105,7 +105,7 @@ const EditProduct = () => {
 								</Form.Group>
 							</Form>
 						</Col>
-						<Col>
+						<Col sm='auto' lg='6'>
 							<Form>
 								<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
 									<Form.Label>Product price</Form.Label>

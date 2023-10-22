@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavBar } from './components/NavBar';
 import { Routes, Route } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
@@ -13,7 +12,7 @@ import { NotFound } from './components/NotFound';
 
 function App() {
 	return (
-		<div className='App'>
+		<div>
 			<NavBar />
 			<Routes>
 				<Route>

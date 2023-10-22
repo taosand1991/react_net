@@ -151,7 +151,7 @@ export const Login = () => {
 		<>
 			<Container>
 				<Row>
-					<Col>
+					<Col sm={6} xs='12'>
 						<h4 className='text-center p-3 mb-3'>Login to your account</h4>
 						{error?.name === 'login' && (
 							<Alert className='mt-2 mb-1' variant='danger'>
@@ -207,15 +207,8 @@ export const Login = () => {
 							</Form.Group>
 						</Form>
 					</Col>
-					<Col
-						xs={1}
-						style={{
-							borderLeft: '5px solid green',
-							marginTop: '20px',
-							marginLeft: '15px',
-						}}
-					/>
-					<Col xs={6}>
+					<Col className='divider' />
+					<Col xs='auto'>
 						<h4 className='text-center p-3 mb-3'>
 							You dont have account? <i>Sign up</i>
 						</h4>

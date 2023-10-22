@@ -51,11 +51,8 @@ export const NewPassword = () => {
 	};
 	return (
 		<>
-			<Container
-				className='d-flex justify-content-center align-items-center'
-				style={{ height: '60vh', width: '50%' }}
-			>
-				<Col>
+			<Container className='d-flex justify-content-center align-items-center reset-password'>
+				<Col sm={12} xs={12}>
 					<h4 className='mb-4 text-center'>Enter New Password</h4>
 					<Form onSubmit={setNewPassword}>
 						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
