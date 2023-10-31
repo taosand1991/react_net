@@ -4,10 +4,15 @@ import { HomePageProps, Product } from '../../Interfaces/productInterface';
 import { getImageUrl } from '../../utils/imageFinder';
 import Loading from '../Loading';
 import { TagCategories } from '../TagCategories';
+import { addToCartLocal } from '../../utils/cartLocal';
+import { AddToCart } from '../AddToCart';
+import { useState } from 'react';
 
 export const DisplayProducts = ({ loading, products, user, handleDelete }: HomePageProps) => {
+	const [productId, setProductId] = useState<string>('');
 	return (
 		<>
+			<AddToCart key={productId} />
 			{loading && <Loading />}
 			{!loading && Array.isArray(products) && products.length > 0 ? (
 				<Container>
@@ -65,7 +70,19 @@ export const DisplayProducts = ({ loading, products, user, handleDelete }: HomeP
 														</Card.Text>
 													</Col>
 													<Col>
-														<Button color='blue'>Add to cart</Button>
+														<Button
+															onClick={() => {
+																addToCartLocal(
+																	product.id,
+																	product.productName,
+																	product.productPrice
+																);
+																setProductId(product.id);
+															}}
+															color='blue'
+														>
+															Add to cart
+														</Button>
 													</Col>
 												</Row>
 											</Card.Body>

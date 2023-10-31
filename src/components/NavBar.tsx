@@ -40,6 +40,17 @@ export const NavBar = (): JSX.Element => {
 								</NavLink>
 							</Nav>
 						)}
+						{user?.firstName && user?.admin && (
+							<Nav className='d-block m-2'>
+								<NavLink
+									style={{ textDecoration: 'none', color: 'white' }}
+									className='mr-2'
+									to='/add-category'
+								>
+									Add Product category
+								</NavLink>
+							</Nav>
+						)}
 						<Nav className='m-2'>
 							{user?.firstName && (
 								<NavLink
@@ -93,6 +104,17 @@ export const NavBar = (): JSX.Element => {
 								to='/add-product'
 							>
 								Add Product
+							</NavLink>
+						</Nav>
+					)}
+					{user?.firstName && user?.admin && (
+						<Nav className='d-block m-2'>
+							<NavLink
+								style={{ textDecoration: 'none', color: 'white' }}
+								className='mr-2'
+								to='/add-category'
+							>
+								Add Product category
 							</NavLink>
 						</Nav>
 					)}

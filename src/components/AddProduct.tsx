@@ -67,10 +67,8 @@ export const AddProduct = (): JSX.Element => {
 		setLoading(true);
 		const customerId = Number(localStorage.getItem('userToken'));
 		try {
-			console.log(category);
 			product.categories.push(category);
 			const productData = { ...product, customerId: customerId };
-			console.log(productData);
 			await axios.post('/Product', productData);
 			setProduct({
 				productName: '',
