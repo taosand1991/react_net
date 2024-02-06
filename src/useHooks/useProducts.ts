@@ -13,10 +13,10 @@ export const useProducts = (): (
 	const [loading, setLoading] = useState<Boolean>(true);
 
 	useEffect(() => {
-		getCategories();
+		getProducts();
 	}, []);
 
-	const getCategories = async (): Promise<void | AxiosError> => {
+	const getProducts = async (): Promise<void | AxiosError> => {
 		try {
 			const response = await axios.get('/Product');
 			setProducts(response.data);
